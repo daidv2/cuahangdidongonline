@@ -1,0 +1,12 @@
+INSERT INTO donhang....
+success: 1
+fail: Thất bại
+validation: Bạn hãy kiểm tra lại dữ liệu
+
+
+{
+  "id": "1",
+  "tenkhachhang": "Dang Van Dai",
+  "sodienthoai": "0333334401",
+  "email": "dangvandai1992@gmail.com"
+}

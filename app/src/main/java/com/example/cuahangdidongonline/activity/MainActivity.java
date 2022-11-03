@@ -174,8 +174,6 @@ public class MainActivity extends AppCompatActivity {
                             IDsanpham = jsonObject.getInt("idsanpham");
                             mangsanpham.add(new Sanpham(ID, Tensanpham, Giasanpham, Hinhanhsanpham, Motasanpham, IDsanpham));
                             sanphamAdapter.notifyDataSetChanged();
-
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -208,13 +206,11 @@ public class MainActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
                     }
 
-                    mangloaisp.add(3, new Loaisp(0, "Liên hệ", "http://www.residenceplus.fr/wp-content/uploads/2014/03/bouton-t%C3%A9l%C3%A9phone-bleu-150x150.png"));
+                    mangloaisp.add(3, new Loaisp(0, "Liên hệ", "https://via.placeholder.com/150x150.png"));
                     mangloaisp.add(4, new Loaisp(0, "Giỏ hàng", "https://cdn.pixabay.com/photo/2017/01/05/19/10/cart-1956097_960_720.png"));
                 }
-
             }
         }, new Response.ErrorListener() {
             @Override

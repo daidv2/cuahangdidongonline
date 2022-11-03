@@ -63,7 +63,6 @@ public class DienThoaiActivity extends AppCompatActivity {
             CheckConnection.ShowToast_Short(getApplicationContext(), "Bạn hãy kiểm tra lại kết nối");
             finish();
         }
-
     }
 
     @Override
@@ -93,6 +92,7 @@ public class DienThoaiActivity extends AppCompatActivity {
                 startActivity(intent);// chuyển màn hình
             }
         });
+
         //bắt sự kiện kéo của Listview
         lvdt.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
@@ -116,7 +116,8 @@ public class DienThoaiActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());// đọc dữ liệu của đường dẫn
         String duongdan = Server.Duongdandienthoai + String.valueOf(Page);// tạo đường dẫn
         // đọc hết các dữ liệu
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, duongdan, new Response.Listener<String>() {
+        //StringRequest stringRequest = new StringRequest(Request.Method.POST, duongdan, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, Server.Duongdandienthoai, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 int id = 0;

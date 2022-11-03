@@ -1,0 +1,20 @@
+INSERT INTO chitietdonhang....
+success: "1"
+fail: "0"
+
+[
+  {
+    "giasanpham": 6990000,
+    "madonhang": "5",
+    "soluongsanpham": 1,
+    "tensanpham": "Laptop Lenovo IdeaPad 118",
+    "masanpham": 20
+  },
+  {
+    "giasanpham": 29970000,
+    "madonhang": "5",
+    "soluongsanpham": 3,
+    "tensanpham": "Điện thoại Sony Xperia Z5 Dual",
+    "masanpham": 21
+  }
+]

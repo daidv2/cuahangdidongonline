@@ -1,0 +1,12 @@
+[
+  {
+    "id": "1",
+    "tenloaisp": "Mobile phone",
+    "hinhanhloaisp": "https://cdn.tgdd.vn//content/icon-phone-96x96-2.png"
+  },
+  {
+    "id": "2",
+    "tenloaisp": "Laptop",
+    "hinhanhloaisp": "https://cdn.tgdd.vn//content/icon-laptop-96x96-1.png"
+  }
+]
