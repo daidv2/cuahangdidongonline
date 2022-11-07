@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.DienThoaiActivity">
+
     <android.support.v7.widget.Toolbar
         android:background="#2091EC"
         app:titleTextColor="#fafafa"
@@ -14,13 +15,12 @@
         android:id="@+id/toolbardienthoai"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
-
     </android.support.v7.widget.Toolbar>
+
     <ListView
         android:id="@+id/listviewdienthoai"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
     </ListView>
 
 </LinearLayout>

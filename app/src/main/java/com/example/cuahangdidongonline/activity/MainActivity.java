@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    //bắt sự kiện click
+    // bắt sự kiện click icon cart trên toolbar
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    // click item list view trong NavigationView
     private void CatchOnItemListView() {
         listViewmanhinhchinh.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -173,6 +174,8 @@ public class MainActivity extends AppCompatActivity {
                             Motasanpham = jsonObject.getString("motasp");
                             IDsanpham = jsonObject.getInt("idsanpham");
                             mangsanpham.add(new Sanpham(ID, Tensanpham, Giasanpham, Hinhanhsanpham, Motasanpham, IDsanpham));
+
+                            // Thông báo toàn bộ dữ liệu thay đổi
                             sanphamAdapter.notifyDataSetChanged();
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -231,9 +234,12 @@ public class MainActivity extends AppCompatActivity {
             ImageView imageView = new ImageView(getApplicationContext());
             Picasso.with(getApplicationContext()).load(mangquangcao.get(i)).into(imageView);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            // add thêm view vào ViewFlipper
             viewFlipper.addView(imageView);
         }
+        // set time lật qua view tiếp theo
         viewFlipper.setFlipInterval(2500);
+        // set auto lật qua view tiếp theo
         viewFlipper.setAutoStart(true);
 
         Animation animation_slide_in = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_in_right);
@@ -243,15 +249,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void ActionBar() {
+        // set toolbar
         setSupportActionBar(toolbar);
+
+        // this will enable the back button in the top action bar.
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
+        // set navigation icon & set click event
         toolbar.setNavigationIcon(android.R.drawable.ic_menu_sort_by_size);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
-
         });
     }
 
@@ -263,13 +274,16 @@ public class MainActivity extends AppCompatActivity {
         listViewmanhinhchinh = (ListView) findViewById(R.id.listviewmanhinhchinh);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerlayout);
 
+        // set data for NavigationView
         mangloaisp = new ArrayList<>();
         loaispAdapter = new LoaispAdapter(mangloaisp, getApplicationContext());
         listViewmanhinhchinh.setAdapter(loaispAdapter);
         mangloaisp.add(0, new Loaisp(0, "Trang chủ", "https://cdn.pixabay.com/photo/2015/12/28/02/58/home-1110868_960_720.png"));
 
+        // set data for RecyclerView
         mangsanpham = new ArrayList<>();
         sanphamAdapter = new SanphamAdapter(getApplicationContext(), mangsanpham);
+        // Nếu danh sách là cố định ko thêm/bớt; thiết lập để cuộn mượt hơn
         recyclerview.setHasFixedSize(true);
         recyclerview.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
         recyclerview.setAdapter(sanphamAdapter);

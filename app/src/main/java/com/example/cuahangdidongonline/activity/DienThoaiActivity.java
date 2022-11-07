@@ -43,7 +43,7 @@ public class DienThoaiActivity extends AppCompatActivity {
     ArrayList<Sanpham> mangdt;// tạo mảng hứng giá trị đưa vào bản vẽ
     int iddt = 0; // khai báo id loại sản phẩm
     int page = 1;
-    View footerview;// khái báo 1 view
+    View footerview;// khai báo 1 view
     boolean isLoading = false;
     mHandler mHandler;
     boolean limitdata = false;
@@ -83,7 +83,7 @@ public class DienThoaiActivity extends AppCompatActivity {
 
     // bắt trạng thái Load thêm dữ liệu
     private void LoadMoreData() {
-        //khi ấn vào sản phẩm chuyển màn hình sang Chi tiết sản phẩm
+        // khi ấn vào sản phẩm chuyển màn hình sang Chi tiết sản phẩm
         lvdt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -93,7 +93,7 @@ public class DienThoaiActivity extends AppCompatActivity {
             }
         });
 
-        //bắt sự kiện kéo của Listview
+        // bắt sự kiện kéo của Listview
         lvdt.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
@@ -111,12 +111,12 @@ public class DienThoaiActivity extends AppCompatActivity {
         });
     }
 
-    //lấy dữ liệu
+    // lấy dữ liệu
     private void GetData(int Page) {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());// đọc dữ liệu của đường dẫn
         String duongdan = Server.Duongdandienthoai + String.valueOf(Page);// tạo đường dẫn
         // đọc hết các dữ liệu
-        //StringRequest stringRequest = new StringRequest(Request.Method.POST, duongdan, new Response.Listener<String>() {
+        // StringRequest stringRequest = new StringRequest(Request.Method.POST, duongdan, new Response.Listener<String>() {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Server.Duongdandienthoai, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -172,14 +172,13 @@ public class DienThoaiActivity extends AppCompatActivity {
     // bắt dự kiện quay về cho Toolbar
     private void ActionToolbar() {
         setSupportActionBar(toolbardt);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);//tạo nứt Home
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);//tạo nút back
         toolbardt.setNavigationOnClickListener(new View.OnClickListener() {// khi click vào quay về trang trước
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-
     }
 
     // lấy id loại sản phẩm
@@ -192,9 +191,11 @@ public class DienThoaiActivity extends AppCompatActivity {
     private void Anhxa() {
         toolbardt = (Toolbar) findViewById(R.id.toolbardienthoai); // gán id cho từng thuộc tính
         lvdt = (ListView) findViewById(R.id.listviewdienthoai);
+
         mangdt = new ArrayList<>();// cấp phát bộ nhớ cho mảng
         dienthoaiAdapter = new DienthoaiAdapter(getApplicationContext(), mangdt);// gọi lại class dienthoaiAdapter
         lvdt.setAdapter(dienthoaiAdapter);// khi có dữ liệu set cho listview
+
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         footerview = inflater.inflate(R.layout.progressbar, null);// gán footerView cho progressbar
         mHandler = new mHandler();

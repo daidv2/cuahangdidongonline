@@ -20,15 +20,16 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class SanphamAdapter extends RecyclerView.Adapter<SanphamAdapter.ItemHolder> {
+
+    private Context context;
+    private ArrayList<Sanpham> arraysanpham;
+
     public SanphamAdapter(Context context, ArrayList<Sanpham> arraysanpham) {
         this.context = context;
         this.arraysanpham = arraysanpham;
     }
 
-    Context context;
-    ArrayList<Sanpham> arraysanpham;
-
-
+    // tạo ra đối tượng ViewHolder, trong nó chứa View hiển thị dữ liệu
     @NonNull
     @Override
     public ItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -37,26 +38,32 @@ public class SanphamAdapter extends RecyclerView.Adapter<SanphamAdapter.ItemHold
         return itemHolder;
     }
 
+    // set data vào ViewHolder
     @Override
     public void onBindViewHolder(ItemHolder holder, int position) {
         Sanpham sanpham = arraysanpham.get(position);
         holder.txttensanpham.setText(sanpham.getTensanpham());
+
         String pattern = "###,###.###";
         DecimalFormat decimalFormat = new DecimalFormat(pattern);
         String format = decimalFormat.format(sanpham.getGiasanpham());
-
         holder.txtgiasanpham.setText("Giá: " + format + " Đ");
+
         Picasso.with(context).load(sanpham.getHinhanhsanpham())
                 .placeholder(R.drawable.no_image)
                 .error(R.drawable.error)
                 .into(holder.imghinhsanpham);
     }
 
+    // cho biết số phần tử của dữ liệu
     @Override
     public int getItemCount() {
         return arraysanpham.size();
     }
 
+    /**
+     * Lớp nắm giữ cấu trúc view
+     */
     public class ItemHolder extends RecyclerView.ViewHolder {
         public ImageView imghinhsanpham;
         public TextView txttensanpham, txtgiasanpham;
@@ -66,6 +73,8 @@ public class SanphamAdapter extends RecyclerView.Adapter<SanphamAdapter.ItemHold
             imghinhsanpham = (ImageView) itemView.findViewById(R.id.imageviewsanpham);
             txtgiasanpham = (TextView) itemView.findViewById(R.id.textviewgiasanpham);
             txttensanpham = (TextView) itemView.findViewById(R.id.textviewtensanpham);
+
+            // Xử lý khi item được bấm
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
